@@ -1,0 +1,42 @@
+@model TO2.Models.Alumno
+
+@{
+    ViewBag.Title = "Actualizar alumno";
+}
+
+<h2>Actualizar alumno</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("dniOriginal", (string)ViewBag.DniOriginal)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.dni)
+        @Html.TextBoxFor(model => model.dni, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.dni, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.nombres)
+        @Html.TextBoxFor(model => model.nombres, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.nombres, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.apellidos)
+        @Html.TextBoxFor(model => model.apellidos, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.carrera)
+        @Html.TextBoxFor(model => model.carrera, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.carrera, "", new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.ciclo)
+        @Html.TextBoxFor(model => model.ciclo, new { @class = "form-control", type = "number", min = "1", max = "10" })
+        @Html.ValidationMessageFor(model => model.ciclo, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
+}

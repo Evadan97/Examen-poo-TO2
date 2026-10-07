@@ -1,0 +1,8 @@
+.vs/
+packages/
+**/bin/
+**/obj/
+*.csproj.user
+
+# Los alumnos registrados localmente no se publican.
+**/App_Data/Alumnos.json

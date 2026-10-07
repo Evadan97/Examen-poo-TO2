@@ -1,0 +1,60 @@
+@model IEnumerable<TO2.Models.Alumno>
+@using System.Linq
+
+@{
+    ViewBag.Title = "Alumnos";
+}
+
+<h2>Alumnos</h2>
+
+<p>@Html.ActionLink("Agregar alumno", "Agregar", null, new { @class = "btn btn-primary" })</p>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div id="mensaje" class="alert alert-success">@TempData["Mensaje"]</div>
+}
+@if (TempData["Aviso"] != null)
+{
+    <div id="mensaje" class="alert alert-info">@TempData["Aviso"]</div>
+}
+
+@if (!Model.Any())
+{
+    <p>Todavía no hay alumnos. Usa <strong>Agregar alumno</strong> para registrar el primero.</p>
+}
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.dni)</th>
+        <th>@Html.DisplayNameFor(model => model.nombres)</th>
+        <th>@Html.DisplayNameFor(model => model.apellidos)</th>
+        <th>@Html.DisplayNameFor(model => model.carrera)</th>
+        <th>@Html.DisplayNameFor(model => model.ciclo)</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.dni)</td>
+            <td>@Html.DisplayFor(modelItem => item.nombres)</td>
+            <td>@Html.DisplayFor(modelItem => item.apellidos)</td>
+            <td>@Html.DisplayFor(modelItem => item.carrera)</td>
+            <td>@Html.DisplayFor(modelItem => item.ciclo)</td>
+            <td>
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.dni }) |
+                @Html.ActionLink("Actualizar", "Actualizar", new { id = item.dni }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.dni })
+            </td>
+        </tr>
+    }
+</table>
+
+@section scripts {
+    <script>
+        // El mensaje de confirmación desaparece después de cinco segundos.
+        window.setTimeout(function () {
+            var mensaje = document.getElementById('mensaje');
+            if (mensaje) mensaje.style.display = 'none';
+        }, 5000);
+    </script>
+}

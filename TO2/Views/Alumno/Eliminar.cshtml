@@ -1,0 +1,15 @@
+@model TO2.Models.Alumno
+
+@{
+    ViewBag.Title = "Eliminar alumno";
+}
+
+<h2>Eliminar alumno</h2>
+<p>¿Seguro que deseas eliminar a @Model.nombres @Model.apellidos (DNI @Model.dni)?</p>
+
+@using (Html.BeginForm("Eliminar", "Alumno", new { id = Model.dni }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Confirmar eliminacion</button>
+    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+}

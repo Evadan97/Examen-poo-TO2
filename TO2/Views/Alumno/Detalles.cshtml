@@ -1,0 +1,21 @@
+@model TO2.Models.Alumno
+
+@{
+    ViewBag.Title = "Detalles del alumno";
+}
+
+<h2>Detalles del alumno</h2>
+<dl class="row">
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.dni)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.dni)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.nombres)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.nombres)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.apellidos)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.apellidos)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.carrera)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.carrera)</dd>
+    <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ciclo)</dt>
+    <dd class="col-sm-9">@Html.DisplayFor(model => model.ciclo)</dd>
+</dl>
+@Html.ActionLink("Actualizar", "Actualizar", new { id = Model.dni }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-secondary" })
